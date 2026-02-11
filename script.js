@@ -223,6 +223,80 @@ if (projectsSection) {
 }
 
 // ===================================
+// Projects Section - Enhanced Interactive Effects
+// ===================================
+
+if (!isMobile && !prefersReducedMotion) {
+    const projectsSection = document.querySelector('.projects-section');
+    const projectsBackground = document.querySelector('.projects-background');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    // ===================================
+    // Mouse-Reactive Background Gradient
+    // ===================================
+    let projMouseX = 50;
+    let projMouseY = 50;
+    let projCurrentX = 50;
+    let projCurrentY = 50;
+    let projRafId = null;
+
+    if (projectsSection && projectsBackground) {
+        projectsSection.addEventListener('mousemove', (e) => {
+            const rect = projectsSection.getBoundingClientRect();
+            projMouseX = ((e.clientX - rect.left) / rect.width) * 100;
+            projMouseY = ((e.clientY - rect.top) / rect.height) * 100;
+        });
+
+        function animateProjectsBackground() {
+            // Smooth interpolation
+            projCurrentX += (projMouseX - projCurrentX) * 0.05;
+            projCurrentY += (projMouseY - projCurrentY) * 0.05;
+
+            projectsBackground.style.setProperty('--mouse-x', `${projCurrentX}%`);
+            projectsBackground.style.setProperty('--mouse-y', `${projCurrentY}%`);
+
+            projRafId = requestAnimationFrame(animateProjectsBackground);
+        }
+
+        animateProjectsBackground();
+
+        // Cleanup on visibility change
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden && projRafId) {
+                cancelAnimationFrame(projRafId);
+            } else if (!document.hidden && projectsSection) {
+                animateProjectsBackground();
+            }
+        });
+    }
+
+    // ===================================
+    // Custom Cursor for Projects Section
+    // ===================================
+    const cursor = document.querySelector('.custom-cursor');
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorOutline = document.querySelector('.cursor-outline');
+
+    if (projectsSection && cursor) {
+        projectsSection.addEventListener('mouseenter', () => {
+            cursorDot.style.width = '12px';
+            cursorDot.style.height = '12px';
+            cursorDot.style.background = 'rgba(99, 102, 241, 0.8)';
+            cursorDot.style.boxShadow = '0 0 20px rgba(99, 102, 241, 0.6)';
+            cursorOutline.style.borderColor = 'rgba(99, 102, 241, 0.6)';
+        });
+
+        projectsSection.addEventListener('mouseleave', () => {
+            cursorDot.style.width = '';
+            cursorDot.style.height = '';
+            cursorDot.style.background = '';
+            cursorDot.style.boxShadow = '';
+            cursorOutline.style.borderColor = '';
+        });
+    }
+}
+
+// ===================================
 // Hero Parallax Effect (Enhanced)
 // ===================================
 
@@ -763,3 +837,277 @@ if (prefersReducedMotion) {
         card.style.animation = 'none';
     });
 }
+
+// ===================================
+// Certifications Section - Interactive Effects
+// ===================================
+
+if (!isMobile && !prefersReducedMotion) {
+    const certificationsSection = document.querySelector('.certifications-section');
+    const certificationsBackground = document.querySelector('.certifications-background');
+    const certificationsText = document.querySelector('.certifications-text');
+    const certificationCards = document.querySelectorAll('.certification-card');
+
+    // ===================================
+    // Mouse-Reactive Background Gradient
+    // ===================================
+    let certMouseX = 50;
+    let certMouseY = 50;
+    let certCurrentX = 50;
+    let certCurrentY = 50;
+    let certRafId = null;
+
+    if (certificationsSection && certificationsBackground) {
+        certificationsSection.addEventListener('mousemove', (e) => {
+            const rect = certificationsSection.getBoundingClientRect();
+            certMouseX = ((e.clientX - rect.left) / rect.width) * 100;
+            certMouseY = ((e.clientY - rect.top) / rect.height) * 100;
+        });
+
+        function animateCertificationsBackground() {
+            // Smooth interpolation
+            certCurrentX += (certMouseX - certCurrentX) * 0.05;
+            certCurrentY += (certMouseY - certCurrentY) * 0.05;
+
+            certificationsBackground.style.setProperty('--mouse-x', `${certCurrentX}%`);
+            certificationsBackground.style.setProperty('--mouse-y', `${certCurrentY}%`);
+
+            certRafId = requestAnimationFrame(animateCertificationsBackground);
+        }
+
+        animateCertificationsBackground();
+
+        // Cleanup on visibility change
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden && certRafId) {
+                cancelAnimationFrame(certRafId);
+            } else if (!document.hidden && certificationsSection) {
+                animateCertificationsBackground();
+            }
+        });
+    }
+
+    // ===================================
+    // Text Fade-Up Animation on Scroll
+    // ===================================
+    const certificationsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Trigger text animation
+                if (certificationsText) {
+                    setTimeout(() => {
+                        certificationsText.classList.add('visible');
+                    }, 200);
+                }
+
+                // Staggered card animation
+                certificationCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('visible');
+                    }, 400 + (index * 150));
+                });
+
+                certificationsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    if (certificationsSection) {
+        certificationsObserver.observe(certificationsSection);
+    }
+
+    // ===================================
+    // 3D Tilt Effect on Certification Cards
+    // ===================================
+    certificationCards.forEach(card => {
+        let cardMouseX = 0;
+        let cardMouseY = 0;
+        let cardCurrentX = 0;
+        let cardCurrentY = 0;
+        let isCardHovering = false;
+        let cardRafId = null;
+
+        card.addEventListener('mouseenter', () => {
+            isCardHovering = true;
+        });
+
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            cardMouseX = (x / rect.width - 0.5) * 2; // -1 to 1
+            cardMouseY = (y / rect.height - 0.5) * 2; // -1 to 1
+        });
+
+        card.addEventListener('mouseleave', () => {
+            isCardHovering = false;
+            cardMouseX = 0;
+            cardMouseY = 0;
+
+            // Smooth return to neutral
+            const resetAnimation = () => {
+                cardCurrentX += (0 - cardCurrentX) * 0.15;
+                cardCurrentY += (0 - cardCurrentY) * 0.15;
+
+                const rotateY = cardCurrentX * 10;
+                const rotateX = -cardCurrentY * 10;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+                if (Math.abs(cardCurrentX) > 0.01 || Math.abs(cardCurrentY) > 0.01) {
+                    requestAnimationFrame(resetAnimation);
+                } else {
+                    card.style.transform = '';
+                }
+            };
+
+            resetAnimation();
+        });
+
+        function animateCardTilt() {
+            if (!isCardHovering) return;
+
+            // Smooth interpolation
+            cardCurrentX += (cardMouseX - cardCurrentX) * 0.15;
+            cardCurrentY += (cardMouseY - cardCurrentY) * 0.15;
+
+            const rotateY = cardCurrentX * 10; // Max 10deg rotation
+            const rotateX = -cardCurrentY * 10;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+            cardRafId = requestAnimationFrame(animateCardTilt);
+        }
+
+        card.addEventListener('mouseenter', () => {
+            animateCardTilt();
+        });
+    });
+
+    // ===================================
+    // Particle Burst on First Hover
+    // ===================================
+    certificationCards.forEach(card => {
+        const particleContainer = card.querySelector('.particle-container');
+        let hasHovered = card.getAttribute('data-hovered') === 'true';
+
+        card.addEventListener('mouseenter', () => {
+            if (!hasHovered && particleContainer) {
+                hasHovered = true;
+                card.setAttribute('data-hovered', 'true');
+
+                // Create 8 particles
+                const particleCount = 8;
+                const rect = card.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+
+                    const angle = (i / particleCount) * Math.PI * 2;
+                    const distance = 60;
+                    const tx = Math.cos(angle) * distance;
+                    const ty = Math.sin(angle) * distance;
+
+                    particle.style.left = centerX + 'px';
+                    particle.style.top = centerY + 'px';
+                    particle.style.setProperty('--tx', `${tx}px`);
+                    particle.style.setProperty('--ty', `${ty}px`);
+
+                    particleContainer.appendChild(particle);
+
+                    // Remove particle after animation
+                    setTimeout(() => {
+                        particle.remove();
+                    }, 800);
+                }
+            }
+        });
+    });
+
+    // ===================================
+    // Custom Cursor for Certifications Section
+    // ===================================
+    const cursor = document.querySelector('.custom-cursor');
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorOutline = document.querySelector('.cursor-outline');
+
+    if (certificationsSection && cursor) {
+        certificationsSection.addEventListener('mouseenter', () => {
+            cursorDot.style.width = '12px';
+            cursorDot.style.height = '12px';
+            cursorDot.style.background = 'rgba(99, 102, 241, 0.8)';
+            cursorDot.style.boxShadow = '0 0 20px rgba(99, 102, 241, 0.6)';
+            cursorOutline.style.borderColor = 'rgba(99, 102, 241, 0.6)';
+        });
+
+        certificationsSection.addEventListener('mouseleave', () => {
+            cursorDot.style.width = '';
+            cursorDot.style.height = '';
+            cursorDot.style.background = '';
+            cursorDot.style.boxShadow = '';
+            cursorOutline.style.borderColor = '';
+        });
+    }
+}
+
+// ===================================
+// Reduced Motion Support for Certifications
+// ===================================
+if (prefersReducedMotion) {
+    const certificationsText = document.querySelector('.certifications-text');
+    const certificationCards = document.querySelectorAll('.certification-card');
+
+    if (certificationsText) {
+        certificationsText.classList.add('visible');
+        certificationsText.style.opacity = '1';
+        certificationsText.style.transform = 'none';
+    }
+
+    certificationCards.forEach(card => {
+        card.classList.add('visible');
+        card.style.opacity = '1';
+        card.style.transform = 'none';
+        card.style.animation = 'none';
+    });
+}
+
+// ===================================
+// Certificate Click Handlers
+// ===================================
+
+const clickableCertCards = document.querySelectorAll('.certification-card[data-cert-url]');
+
+clickableCertCards.forEach(card => {
+    // Click handler
+    card.addEventListener('click', function () {
+        const certUrl = this.getAttribute('data-cert-url');
+        if (certUrl && certUrl !== '#') {
+            window.open(certUrl, '_blank', 'noopener,noreferrer');
+        } else {
+            // If no URL is set, show a message (you can replace with actual URLs)
+            console.log('Certificate URL not configured for:', this.getAttribute('data-cert'));
+            alert('Please add your certificate URL to view the certificate.');
+        }
+    });
+
+    // Keyboard accessibility (Enter and Space keys)
+    card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.click();
+        }
+    });
+
+    // Visual feedback on keyboard focus
+    card.addEventListener('focus', function () {
+        this.style.borderColor = 'rgba(99, 102, 241, 0.5)';
+    });
+
+    card.addEventListener('blur', function () {
+        this.style.borderColor = '';
+    });
+});

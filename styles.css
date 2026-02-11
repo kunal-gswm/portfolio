@@ -390,8 +390,12 @@ a:not(.cta-button):not(.social-link):not(.submit-button):hover::after {
 .hero-subtitle {
     font-size: clamp(var(--font-size-lg), 2vw, var(--font-size-2xl));
     color: var(--color-text-secondary);
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-sm);
     font-weight: 400;
+}
+
+.hero-subtitle:last-of-type {
+    margin-bottom: var(--spacing-xl);
 }
 
 .reveal-text {
@@ -403,6 +407,10 @@ a:not(.cta-button):not(.social-link):not(.submit-button):hover::after {
 
 .reveal-text.delay-1 {
     animation-delay: 0.6s;
+}
+
+.reveal-text.delay-2 {
+    animation-delay: 0.9s;
 }
 
 @keyframes revealText {
@@ -855,17 +863,94 @@ a:not(.cta-button):not(.social-link):not(.submit-button):hover::after {
 }
 
 /* ===================================
-   Projects Section with 3D Tilt
+   Projects Section - Enhanced Design
    =================================== */
+.projects-section {
+    background: var(--color-bg);
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Mouse-Reactive Radial Gradient Background */
+.projects-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+        radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            hsla(245, 80%, 60%, 0.15) 0%,
+            transparent 40%),
+        radial-gradient(circle at calc(100% - var(--mouse-x, 50%)) calc(100% - var(--mouse-y, 50%)),
+            hsla(265, 70%, 55%, 0.12) 0%,
+            transparent 40%),
+        radial-gradient(circle at 50% 50%,
+            hsla(255, 75%, 58%, 0.08) 0%,
+            transparent 50%);
+    opacity: 0;
+    transition: opacity 1s ease-out;
+    will-change: background;
+}
+
+.projects-section.visible .projects-background {
+    opacity: 1;
+}
+
+/* Centered Animated Gradient Title */
+.projects-title {
+    text-align: center;
+    background: linear-gradient(135deg,
+            var(--color-neon-blue, #6366f1) 0%,
+            var(--color-violet, #8b5cf6) 50%,
+            var(--color-neon-blue, #6366f1) 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    animation: gradientShift 8s ease-in-out infinite;
+    margin-bottom: var(--spacing-3xl);
+}
+
+.projects-title::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+}
+
+.projects-title::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            transparent 100%);
+    transform: translateX(-100%);
+    animation: shimmer 6s ease-in-out infinite;
+}
+
+/* Projects Grid with Increased Spacing */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: var(--spacing-xl);
+    gap: var(--spacing-2xl);
+    position: relative;
+    z-index: 1;
 }
 
+/* Enhanced Glassmorphic Project Cards */
 .project-card {
-    background: var(--color-surface-elevated);
-    border: 1px solid var(--color-border);
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(99, 102, 241, 0.2);
     border-radius: var(--border-radius-lg);
     overflow: hidden;
     transition: all var(--transition-slow);
@@ -873,7 +958,11 @@ a:not(.cta-button):not(.social-link):not(.submit-button):hover::after {
     position: relative;
     transform-style: preserve-3d;
     perspective: 1000px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
+
 
 .project-card::before {
     content: '';
@@ -961,6 +1050,288 @@ a:not(.cta-button):not(.social-link):not(.submit-button):hover::after {
 .tag:hover {
     background: rgba(99, 102, 241, 0.2);
     transform: translateY(-2px);
+}
+
+/* ===================================
+   Certifications Section - Reversed Layout
+   =================================== */
+.certifications-section {
+    background: var(--color-bg);
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Mouse-Reactive Radial Gradient Background */
+.certifications-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+        radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            hsla(245, 80%, 60%, 0.15) 0%,
+            transparent 40%),
+        radial-gradient(circle at calc(100% - var(--mouse-x, 50%)) calc(100% - var(--mouse-y, 50%)),
+            hsla(265, 70%, 55%, 0.12) 0%,
+            transparent 40%),
+        radial-gradient(circle at 70% 30%,
+            hsla(255, 75%, 58%, 0.08) 0%,
+            transparent 50%);
+    opacity: 0;
+    transition: opacity 1s ease-out;
+    will-change: background;
+}
+
+.certifications-section.visible .certifications-background {
+    opacity: 1;
+}
+
+/* Layout: Left (Cards) | Right (Text) - Reversed from About */
+.certifications-layout {
+    display: flex;
+    gap: var(--spacing-3xl);
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+}
+
+.certifications-container {
+    flex: 1;
+}
+
+.certifications-text-container {
+    flex: 1;
+    max-width: 600px;
+    text-align: right;
+}
+
+/* Animated Gradient Heading */
+.certifications-title {
+    background: linear-gradient(135deg,
+            var(--color-neon-blue, #6366f1) 0%,
+            var(--color-violet, #8b5cf6) 50%,
+            var(--color-neon-blue, #6366f1) 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    animation: gradientShift 8s ease-in-out infinite;
+    margin-bottom: var(--spacing-xl);
+}
+
+.certifications-title::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+}
+
+.certifications-title::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            transparent 100%);
+    transform: translateX(-100%);
+    animation: shimmer 6s ease-in-out infinite;
+}
+
+/* Certifications Text Styling */
+.certifications-text {
+    font-size: var(--font-size-xl);
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.33, 1, 0.68, 1),
+        transform 0.8s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.certifications-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animated Underline on Paragraph Hover */
+.certifications-text::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-neon-blue, #6366f1), var(--color-violet, #8b5cf6));
+    transition: width 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.certifications-text:hover::after {
+    width: 100%;
+}
+
+/* Certifications Grid */
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+}
+
+/* Glassmorphic Certification Cards */
+.certification-card {
+    padding: var(--spacing-lg);
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: var(--border-radius-lg);
+    position: relative;
+    overflow: hidden;
+    cursor: none;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    opacity: 0;
+    transform: translateY(60px);
+    will-change: transform, box-shadow;
+}
+
+.certification-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Idle Floating Animation */
+.certification-card[data-cert="aws"] {
+    animation: float 4s ease-in-out infinite;
+    animation-delay: 0s;
+}
+
+.certification-card[data-cert="google"] {
+    animation: float 4.5s ease-in-out infinite;
+    animation-delay: 0.5s;
+}
+
+.certification-card[data-cert="python"] {
+    animation: float 4.2s ease-in-out infinite;
+    animation-delay: 1s;
+}
+
+.certification-card[data-cert="powerbi"] {
+    animation: float 4.8s ease-in-out infinite;
+    animation-delay: 1.5s;
+}
+
+/* Card Hover State */
+.certification-card:hover {
+    border-color: rgba(99, 102, 241, 0.5);
+    box-shadow:
+        0 20px 60px rgba(99, 102, 241, 0.3),
+        0 0 80px rgba(99, 102, 241, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    animation-play-state: paused;
+}
+
+/* Gradient Intensification on Hover */
+.certification-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            rgba(99, 102, 241, 0.1),
+            rgba(139, 92, 246, 0.1));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.certification-card:hover::before {
+    opacity: 1;
+}
+
+/* Certification Icon */
+.certification-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(99, 102, 241, 0.15);
+    border-radius: var(--border-radius-sm);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-neon-blue, #6366f1);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.certification-card:hover .certification-icon {
+    background: rgba(99, 102, 241, 0.25);
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+}
+
+.certification-card h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-primary);
+    transition: color 0.3s ease;
+}
+
+.certification-card:hover h3 {
+    color: var(--color-neon-blue, #6366f1);
+}
+
+.certification-card p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Certificate Badge */
+.cert-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-xs);
+    color: var(--color-accent-hover);
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+    margin-top: var(--spacing-xs);
+}
+
+.certification-card:hover .cert-badge {
+    opacity: 1;
+    transform: translateY(0);
+    background: rgba(99, 102, 241, 0.2);
+}
+
+/* Clickable Card Styles */
+.certification-card[role="button"] {
+    cursor: pointer;
+}
+
+.certification-card[role="button"]:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+.certification-card[role="button"]:active {
+    transform: scale(0.98);
 }
 
 /* ===================================
@@ -1180,6 +1551,16 @@ a:not(.cta-button):not(.social-link):not(.submit-button):hover::after {
         grid-template-columns: 1fr;
     }
 
+    /* Projects Section Mobile */
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+
+    .projects-title {
+        margin-bottom: var(--spacing-2xl);
+    }
+
     /* Disable heavy effects on mobile */
     .skill-card {
         animation: none !important;
@@ -1206,6 +1587,26 @@ a:not(.cta-button):not(.social-link):not(.submit-button):hover::after {
 
     .ambient-shapes {
         display: none;
+    }
+
+    /* Certifications Section - Mobile */
+    .certifications-layout {
+        flex-direction: column;
+        gap: var(--spacing-2xl);
+    }
+
+    .certifications-text-container {
+        text-align: left;
+        order: -1;
+        /* Move text above cards on mobile */
+    }
+
+    .certifications-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .certification-card {
+        animation: none !important;
     }
 }
 
