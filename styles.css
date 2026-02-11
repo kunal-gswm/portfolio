@@ -1628,6 +1628,8 @@ a:not(.cta-button):not(.social-link):not(.submit-button):hover::after {
    Performance Optimizations
    =================================== */
 .hero-background,
+.certifications-background,
+.projects-background,
 .project-card,
 .skill-card,
 .cta-button,
