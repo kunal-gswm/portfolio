@@ -83,59 +83,51 @@ if (!isMobile && !prefersReducedMotion) {
 // Staggered Letter Reveal Animation
 // ===================================
 
-function initLetterReveal() {
-    const heroTitle = document.querySelector('.hero-title');
-    const text = heroTitle.getAttribute('data-text');
-    const letterContainer = heroTitle.querySelector('.letter-reveal');
+// ===================================
+// Typing Animation for Hero Subtitle
+// ===================================
 
-    if (!text || !letterContainer) return;
+const typingText = document.querySelector('.typing-text');
+const phrases = [
+    'Full-Stack Developer',
+    'Data Scientist',
+    'Problem Solver',
+    'Tech Enthusiast'
+];
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typeSpeed = 100;
 
-    // Split text into letters
-    const letters = text.split('');
-    letterContainer.innerHTML = '';
+function typeEffect() {
+    const currentPhrase = phrases[phraseIndex];
 
-    letters.forEach((letter, index) => {
-        const span = document.createElement('span');
-        span.className = 'letter';
-        span.textContent = letter === ' ' ? '\u00A0' : letter;
-        span.style.animationDelay = `${index * 0.05}s`;
-        letterContainer.appendChild(span);
-    });
+    if (isDeleting) {
+        typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+        charIndex--;
+        typeSpeed = 50;
+    } else {
+        typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+        charIndex++;
+        typeSpeed = 100;
+    }
+
+    if (!isDeleting && charIndex === currentPhrase.length) {
+        isDeleting = true;
+        typeSpeed = 2000; // Pause at end
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        typeSpeed = 500; // Pause before new phrase
+    }
+
+    setTimeout(typeEffect, typeSpeed);
 }
 
-// Initialize on load
-window.addEventListener('load', initLetterReveal);
-
-// ===================================
-// CTA Button Ripple Effect
-// ===================================
-
-const ctaButtons = document.querySelectorAll('.cta-button, .submit-button');
-
-ctaButtons.forEach(button => {
-    button.addEventListener('click', function (e) {
-        const ripple = this.querySelector('.button-ripple') || document.createElement('span');
-
-        if (!this.querySelector('.button-ripple')) {
-            ripple.className = 'button-ripple';
-            this.appendChild(ripple);
-        }
-
-        ripple.style.width = '0';
-        ripple.style.height = '0';
-
-        const rect = this.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-
-        ripple.style.width = size + 'px';
-        ripple.style.height = size + 'px';
-
-        setTimeout(() => {
-            ripple.style.width = '0';
-            ripple.style.height = '0';
-        }, 600);
-    });
-});
+// Start typing animation on load
+if (typingText) {
+    setTimeout(typeEffect, 1000);
+}
 
 // ===================================
 // 3D Tilt Effect on Project Cards
