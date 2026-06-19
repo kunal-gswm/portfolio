@@ -14,7 +14,7 @@ export default function Contact() {
         transition={{ duration: 0.6 }}
         className="text-center sm:text-left"
       >
-        <h2 className="text-3xl sm:text-4xl font-bold text-zinc-50 mb-6 tracking-tight">Let's build something exceptional.</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold text-zinc-50 mb-6 tracking-tight">Let's work together.</h2>
         <p className="text-zinc-400 text-lg mb-10 max-w-2xl text-balance">
           Currently open for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
         </p>

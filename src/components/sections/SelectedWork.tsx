@@ -9,21 +9,21 @@ import { FaGithub } from 'react-icons/fa';
 const projects = [
   {
     title: "Hostile Data",
-    summary: "Cybersecurity threat intelligence and data engineering pipeline.",
+    summary: "Cybersecurity and data engineering pipeline.",
     image: "/assets/hostile_data.png",
     github: "https://github.com/kunal-gswm/Hostile-Data",
     tech: ["Python", "Data Engineering", "Cybersecurity"]
   },
   {
     title: "Blockchain E-Voting",
-    summary: "Secure, decentralized digital ballot and voting infrastructure.",
+    summary: "Digital voting system using blockchain.",
     image: "/assets/blockchain_evoting.png",
     github: "#",
     tech: ["Solidity", "React", "Cryptography"]
   },
   {
     title: "LocalInvoice",
-    summary: "SaaS business invoicing and financial analytics system.",
+    summary: "Business invoicing and financial analytics system.",
     image: "/assets/localinvoice.png",
     github: "https://github.com/kunal-gswm/LocalInvoice",
     tech: ["TypeScript", "Next.js", "SQL"]

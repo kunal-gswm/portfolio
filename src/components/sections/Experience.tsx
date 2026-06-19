@@ -34,7 +34,7 @@ export default function Experience() {
                 </h3>
                 <p className="text-sm text-zinc-500 mt-0.5">5+ Hackathons</p>
                 <p className="mt-3 text-sm text-zinc-400 leading-relaxed">
-                  Participated in 5+ hackathons, building innovative solutions across cybersecurity, AI, and data engineering domains.
+                  Participated in 5+ hackathons, building solutions in cybersecurity, AI, and data engineering.
                 </p>
               </div>
             </div>
@@ -75,7 +75,7 @@ export default function Experience() {
                 </div>
 
                 <p className="mt-3 text-sm text-zinc-400 leading-relaxed">
-                  Specializing in advanced machine learning algorithms, deep learning, and robust software engineering principles.
+                  Focusing on machine learning, deep learning, and software engineering.
                 </p>
               </div>
             </div>

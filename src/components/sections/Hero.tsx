@@ -33,7 +33,7 @@ export default function Hero() {
         transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-50 mb-8 max-w-[600px] leading-[1.15]"
       >
-        Building intelligent products with AI and data.
+        Building software with AI and data.
       </motion.h1>
 
       {/* Supporting Text */}
@@ -43,7 +43,7 @@ export default function Hero() {
         transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         className="text-lg text-zinc-400 max-w-[500px] mb-12 leading-relaxed"
       >
-        I engineer robust backend architectures, scalable machine learning pipelines, and the elegant interfaces that power them.
+        I build backend systems, machine learning models, and user interfaces.
       </motion.p>
 
       {/* Trust Indicators */}

@@ -60,7 +60,7 @@ export default function Sidebar() {
         <h2 className="text-lg font-medium text-zinc-400 mb-4">AI & Data Science Engineer</h2>
         
         <p className="text-sm text-zinc-500 mb-6 text-balance">
-          Transforming complex data into scalable intelligence and secure architectures.
+          Building data pipelines and secure software systems.
         </p>
 
         {/* Status indicator */}
@@ -69,7 +69,7 @@ export default function Sidebar() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
           </span>
-          Building scalable products
+          Building software products
         </div>
 
         {/* Navigation */}

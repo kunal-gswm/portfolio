@@ -33,7 +33,7 @@ export default function FeaturedProject() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-6">
               <div>
                 <h3 className="text-3xl font-bold text-zinc-50 mb-2">GameLingo</h3>
-                <p className="text-zinc-400 text-lg">AI-powered gaming terminology translation engine.</p>
+                <p className="text-zinc-400 text-lg">Translation engine for gaming terminology.</p>
               </div>
               <div className="flex gap-3">
                 <a href="https://github.com/kunal-gswm/gamelingo" target="_blank" rel="noreferrer" className="flex items-center justify-center h-10 w-10 rounded-full bg-white/5 hover:bg-white/10 text-zinc-300 hover:text-white transition-colors border border-white/10">
@@ -53,7 +53,7 @@ export default function FeaturedProject() {
               </div>
               <div>
                 <div className="text-xs text-zinc-500 uppercase tracking-wider mb-1">Performance</div>
-                <div className="text-sm font-medium text-zinc-300">&lt;200ms latency</div>
+                <div className="text-sm font-medium text-zinc-300">Fast response time</div>
               </div>
               <div>
                 <div className="text-xs text-zinc-500 uppercase tracking-wider mb-1">Role</div>
