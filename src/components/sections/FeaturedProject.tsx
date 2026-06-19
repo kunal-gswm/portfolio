@@ -39,7 +39,7 @@ export default function FeaturedProject() {
                 <a href="https://github.com/kunal-gswm/gamelingo" target="_blank" rel="noreferrer" className="flex items-center justify-center h-10 w-10 rounded-full bg-white/5 hover:bg-white/10 text-zinc-300 hover:text-white transition-colors border border-white/10">
                   <FaGithub size={18} />
                 </a>
-                <Link href="/projects/gamelingo" className="flex items-center gap-2 h-10 px-5 rounded-full bg-zinc-50 hover:bg-zinc-200 text-zinc-950 font-medium transition-colors">
+                <Link href="/projects/gamelingo" className="flex flex-shrink-0 items-center justify-center gap-2 h-10 px-5 rounded-full bg-zinc-50 hover:bg-zinc-200 text-zinc-950 font-medium transition-colors whitespace-nowrap text-sm">
                   Case Study
                   <ArrowRight size={16} />
                 </Link>
