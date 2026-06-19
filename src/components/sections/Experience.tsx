@@ -5,21 +5,15 @@ import { motion } from 'framer-motion';
 
 const experiences = [
   {
-    title: "Freelance Data Engineer",
-    company: "Self-Employed",
-    date: "2022 — Present",
-    description: "Architecting ETL pipelines, custom analytics dashboards, and SaaS platforms (like LocalInvoice) for businesses. Focus on robust, scalable cloud deployments."
-  },
-  {
-    title: "Hackathon Winner",
-    company: "National Tech Fest",
-    date: "2023",
-    description: "Led a team of 4 to build a real-time cybersecurity threat intelligence pipeline using Python and advanced data engineering concepts. Won 1st place out of 50+ competing teams."
+    title: "Hackathon Participant",
+    company: "5+ Hackathons",
+    date: "2023 — Present",
+    description: "Participated in 5+ hackathons, building innovative solutions across cybersecurity, AI, and data engineering domains."
   },
   {
     title: "B.Tech AI & Data Science",
-    company: "University Name",
-    date: "2021 — 2025",
+    company: "Galgotias University",
+    date: "2025 — 2029",
     description: "Specializing in advanced machine learning algorithms, deep learning, and robust software engineering principles."
   }
 ];

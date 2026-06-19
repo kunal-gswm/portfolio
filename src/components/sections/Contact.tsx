@@ -21,6 +21,8 @@ export default function Contact() {
 
         <a 
           href="mailto:kunalgoswami8036@gmail.com" 
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center gap-2 bg-zinc-50 hover:bg-zinc-200 text-zinc-950 font-semibold py-4 px-8 rounded-full transition-colors"
         >
           <Mail size={18} />

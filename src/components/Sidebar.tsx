@@ -118,7 +118,7 @@ export default function Sidebar() {
             <FaLinkedin size={20} />
             <span className="sr-only">LinkedIn</span>
           </a>
-          <a href="mailto:kunalgoswami8036@gmail.com" className="hover:text-zinc-50 transition-colors">
+          <a href="mailto:kunalgoswami8036@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-50 transition-colors">
             <Mail size={20} />
             <span className="sr-only">Email</span>
           </a>

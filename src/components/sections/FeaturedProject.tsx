@@ -30,7 +30,7 @@ export default function FeaturedProject() {
           </div>
           
           <div className="relative p-8 sm:p-10 -mt-20">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-6">
               <div>
                 <h3 className="text-3xl font-bold text-zinc-50 mb-2">GameLingo</h3>
                 <p className="text-zinc-400 text-lg">AI-powered gaming terminology translation engine.</p>
